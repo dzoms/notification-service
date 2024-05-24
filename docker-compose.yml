@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  dzoms-notification-service-postgres:
+    image: postgres:16.1
+    container_name: dzoms_notification_service_postgres
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: notification_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: user
+    networks:
+      - dzoms_notification_service_net
+
+networks:
+  dzoms_notification_service_net:
