@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5435/notification_db
+    username: user
+    password: user
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  liquibase:
+    change-log: classpath:/db/changelog.xml
+  web:
+    resources:
+      add-mappings: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/dzoms-realm
+
+  app:
+    cors:
+      allowed-origins: http://localhost:5173
+
+server:
+  port: 8085
+  servlet:
+    session:
+      timeout: 30
+  error:
+    whitelabel:
+      enabled: false
